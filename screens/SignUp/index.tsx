@@ -276,7 +276,6 @@ function SignUpForm({ props }: any) {
           >
             Already have an account?
           </Text>
-          {/* Opening Link Tag navigateTo:"SignIn" */}
           <Link
             _text={{
               fontSize: "sm",
@@ -299,7 +298,6 @@ function SignUpForm({ props }: any) {
           >
             Sign in
           </Link>
-          {/* Closing Link Tag */}
         </HStack>
       </VStack>
     </KeyboardAwareScrollView>

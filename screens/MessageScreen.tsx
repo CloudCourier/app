@@ -9,157 +9,18 @@ import {
   Spacer,
   NativeBaseProvider,
 } from 'native-base'
-
+import dayjs from 'dayjs'
+import { StyleSheet } from 'react-native'
+import { useAppDispatch, useAppSelector } from '../hooks/store'
+import { setSelectedUserKey } from '../store/userList.slice'
 const ChatList = ({ navigation }) => {
-  const data = [
-    {
-      id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
-      fullName: 'Aafreen Khan',
-      timeStamp: '12:47 PM',
-      recentText: 'Good Day!',
-      avatarUrl:
-        'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
-    },
-    {
-      id: '28694a0f-3da1-471f-bd296-142456e29d72',
-      fullName: 'Kiara',
-      timeStamp: '12:47 PM',
-      recentText: 'I will call today.',
-      avatarUrl:
-        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBwgu1A5zgPSvfE83nurkuzNEoXs9DMNr8Ww&usqp=CAU',
-    },
-    {
-      id: '28694a0f-3da1-471f-b3d936-142456e29d72',
-      fullName: 'Kiara',
-      timeStamp: '12:47 PM',
-      recentText: 'I will call today.',
-      avatarUrl:
-        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBwgu1A5zgPSvfE83nurkuzNEoXs9DMNr8Ww&usqp=CAU',
-    },
-    {
-      id: '28694a0f-3da1-4731f-bd196-142456e29d72',
-      fullName: 'Kiara',
-      timeStamp: '12:47 PM',
-      recentText: 'I will call today.',
-      avatarUrl:
-        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBwgu1A5zgPSvfE83nurkuzNEoXs9DMNr8Ww&usqp=CAU',
-    },
-    {
-      id: '28694a0f-3d4a1-471f-bd96-142456e29d72',
-      fullName: 'Kiara',
-      timeStamp: '12:47 PM',
-      recentText: 'I will call today.',
-      avatarUrl:
-        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBwgu1A5zgPSvfE83nurkuzNEoXs9DMNr8Ww&usqp=CAU',
-    },
-    {
-      id: '3ac68afc-c605-485d3-a4f8-fbd91aa97f63',
-      fullName: 'Sujitha Mathur',
-      timeStamp: '11:11 PM',
-      recentText: 'Cheer up, there!',
-      avatarUrl:
-        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyEaZqT3fHeNrPGcnjLLX1v_W4mvBlgpwxnA&usqp=CAU',
-    },
-    {
-      id: '58694a0f-3da1-4671f-bd96-145571e29d72',
-      fullName: 'Anci Barroco',
-      timeStamp: '6:22 PM',
-      recentText: 'Good Day!',
-      avatarUrl: 'https://miro.medium.com/max/1400/0*0fClPmIScV5pTLoE.jpg',
-    },
-    {
-      id: '68694a0f-3da1-4317f-bd56-142371e29d72',
-      fullName: 'Aniket Kumar',
-      timeStamp: '8:56 PM',
-      recentText: 'All the best',
-      avatarUrl:
-        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSr01zI37DYuR8bMV5exWQBSw28C1v_71CAh8d7GP1mplcmTgQA6Q66Oo--QedAN1B4E1k&usqp=CAU',
-    },
-    {
-      id: '28694a0f-3da1-471f-b3d96-142456e29d72',
-      fullName: 'Kiara',
-      timeStamp: '12:47 PM',
-      recentText: 'I will call today.',
-      avatarUrl:
-        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBwgu1A5zgPSvfE83nurkuzNEoXs9DMNr8Ww&usqp=CAU',
-    },
-    {
-      id: '3ac68afc-c605-458d3-a4f8-fbd91aa97f63',
-      fullName: 'Sujitha Mathur',
-      timeStamp: '11:11 PM',
-      recentText: 'Cheer up, there!',
-      avatarUrl:
-        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyEaZqT3fHeNrPGcnjLLX1v_W4mvBlgpwxnA&usqp=CAU',
-    },
-    {
-      id: '3ac68afc-c605-48d13-a4f8-fbd91aa97f63',
-      fullName: 'Sujitha Mathur',
-      timeStamp: '11:11 PM',
-      recentText: 'Cheer up, there!',
-      avatarUrl:
-        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyEaZqT3fHeNrPGcnjLLX1v_W4mvBlgpwxnA&usqp=CAU',
-    },
-    {
-      id: '3ac68afc-c605-485d3-a42f8-fbd91aa97f63',
-      fullName: 'Sujitha Mathur',
-      timeStamp: '11:11 PM',
-      recentText: 'Cheer up, there!',
-      avatarUrl:
-        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyEaZqT3fHeNrPGcnjLLX1v_W4mvBlgpwxnA&usqp=CAU',
-    },
-    {
-      id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb428ba',
-      fullName: 'Aafreen Khan',
-      timeStamp: '12:47 PM',
-      recentText: 'Good Day!',
-      avatarUrl:
-        'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
-    },
-    {
-      id: '28694a0f-3da1-471f-bd296-1424556e29d72',
-      fullName: 'Kiara',
-      timeStamp: '12:47 PM',
-      recentText: 'I will call today.',
-      avatarUrl:
-        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBwgu1A5zgPSvfE83nurkuzNEoXs9DMNr8Ww&usqp=CAU',
-    },
-    {
-      id: '28694a0f-3da1-471f-b3d936-1424562e29d72',
-      fullName: 'Kiara',
-      timeStamp: '12:47 PM',
-      recentText: 'I will call today.',
-      avatarUrl:
-        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBwgu1A5zgPSvfE83nurkuzNEoXs9DMNr8Ww&usqp=CAU',
-    },
-    {
-      id: 'bd7acbea-c1b1-46c2-aed5-3ad543abb28ba',
-      fullName: 'Aafreen Khan',
-      timeStamp: '12:47 PM',
-      recentText: 'Good Day!',
-      avatarUrl:
-        'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
-    },
-    {
-      id: '28694a0f-3da1-471f-bd296-1424256e29d72',
-      fullName: 'Kiara',
-      timeStamp: '12:47 PM',
-      recentText: 'I will call today.',
-      avatarUrl:
-        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBwgu1A5zgPSvfE83nurkuzNEoXs9DMNr8Ww&usqp=CAU',
-    },
-    {
-      id: '28694a0f-3da1-471f-b3d936-1424156e29d72',
-      fullName: 'Kiara',
-      timeStamp: '12:47 PM',
-      recentText: 'I will call today.',
-      avatarUrl:
-        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBwgu1A5zgPSvfE83nurkuzNEoXs9DMNr8Ww&usqp=CAU',
-    },
-  ]
+  const userList = useAppSelector((state) => state.userList.userList)
+  console.log(userList,'userList')
+  const dispatch = useAppDispatch()
   return (
     <Box>
       <FlatList
-        data={data}
+        data={userList}
         renderItem={({ item }) => (
           <Box
             borderBottomWidth='1'
@@ -175,27 +36,32 @@ const ChatList = ({ navigation }) => {
               <Avatar
                 size='48px'
                 source={{
-                  uri: item.avatarUrl,
+                  uri: item.appLogo,
                 }}
               />
-              <VStack>
+              <VStack style={styles.textContainer}>
                 <Text
                   _dark={{
                     color: 'warmGray.50',
                   }}
+                  numberOfLines={1}
                   color='coolGray.800'
                   bold
-                  onPress={() => navigation.navigate('Chat')}
+                  onPress={() => {
+                    navigation.navigate('Chat')
+                    dispatch(setSelectedUserKey(item.key))
+                  }}
                 >
-                  {item.fullName}
+                  {item.name}
                 </Text>
                 <Text
                   color='coolGray.600'
                   _dark={{
                     color: 'warmGray.200',
                   }}
+                  numberOfLines={1}
                 >
-                  {item.recentText}
+                  {item.name}
                 </Text>
               </VStack>
               <Spacer />
@@ -207,12 +73,12 @@ const ChatList = ({ navigation }) => {
                 color='coolGray.800'
                 alignSelf='flex-start'
               >
-                {item.timeStamp}
+                {dayjs(item.timestamp).format('HH:mm:ss')}
               </Text>
             </HStack>
           </Box>
         )}
-        keyExtractor={(item) => item.id}
+        keyExtractor={(item) => item.key}
       />
     </Box>
   )
@@ -221,7 +87,13 @@ const ChatList = ({ navigation }) => {
 export default ({ navigation }) => {
   return (
     <NativeBaseProvider>
-        <ChatList navigation={navigation} />
+      <ChatList navigation={navigation} />
     </NativeBaseProvider>
   )
 }
+
+const styles = StyleSheet.create({
+  textContainer: {
+    width: '60%',
+  },
+})

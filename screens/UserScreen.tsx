@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { Avatar, Center, VStack, Button } from 'native-base'
 import { Text, View } from '../components/Themed'
 import { useAppSelector } from '../hooks/store'
@@ -32,6 +31,9 @@ export default function UserScreen({ navigation }) {
                 AK
               </Avatar>
               <Text>{user.username}</Text>
+              <Button onPress={() => navigation.navigate('SignIn')}>
+              切换账号
+            </Button>
             </>
           )}
         </VStack>

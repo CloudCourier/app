@@ -7,7 +7,7 @@ import {
   DarkTheme,
 } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
-import * as React from 'react'
+import { useEffect, useRef } from 'react'
 import { ColorSchemeName, Pressable } from 'react-native'
 import { NativeBaseProvider, extendTheme, theme as nbTheme } from 'native-base'
 
@@ -21,7 +21,8 @@ import SignIn from '../screens/SignIn/index'
 import SignUp from '../screens/SignUp/index'
 import ChatScreen from '../screens/ChatScreen'
 import OTP from '../screens/OTP/index'
-
+import { setMessageList, setUserList } from '../store/userList.slice'
+import { useAppDispatch, useAppSelector } from '../hooks/store'
 import {
   RootStackParamList,
   RootTabParamList,
@@ -42,18 +43,34 @@ export default function Navigation({
 }: {
   colorScheme: ColorSchemeName
 }) {
-  // const {
-  //   courierName,
-  //   avatar,
-  //   connect,
-  //   courierKey,
-  //   message,
-  //   readyState,
-  //   sendMessage,
-  // } = useCourier()
-  // React.useEffect(() => {
-  //   connect()
-  // }, [])
+  const dispatch = useAppDispatch()
+  const userList = useAppSelector((state) => state.userList.userList)
+  const messageChannel = useAppSelector(
+    (state) => state.messageChannel.messageChannel
+  )
+  const messageTimestamp = useAppSelector(
+    (state) => state.messageChannel.messageTimestamp
+  )
+  const { connect, user, courierKey, message, sendMessage } = useCourier()
+  useEffect(() => {
+    if (user !== null && !userList.some((item) => item.key === user.key)) {
+      user.message = []
+      dispatch(setUserList(user))
+    }
+  }, [courierKey])
+  useEffect(() => {
+    connect()
+  }, [])
+  useEffect(() => {
+    if (messageChannel && messageChannel.type === 'sendMessage') {
+      console.log(messageChannel)
+      sendMessage(messageChannel.message.key, messageChannel.message.message)
+    }
+    // FIXME 多写个时间点 多余的消耗
+  }, [messageTimestamp])
+  useEffect(() => {
+    dispatch(setMessageList(message))
+  }, [message.timestamp])
   return (
     <NativeBaseProvider theme={theme}>
       <NavigationContainer
@@ -65,7 +82,6 @@ export default function Navigation({
     </NativeBaseProvider>
   )
 }
-
 const Stack = createNativeStackNavigator<RootStackParamList>()
 
 // 路由注册

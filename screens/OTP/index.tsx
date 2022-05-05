@@ -133,7 +133,6 @@ export default function OtpVerification(props: any) {
                             textDecoration: 'none',
                           }}
                         >
-                          {' '}
                           RESEND OTP
                         </Link>
                       </HStack>
@@ -169,7 +168,6 @@ export default function OtpVerification(props: any) {
                 >
                   Already have an account?
                 </Text>
-                {/* Opening Link Tag navigateTo:"SignUp" */}
                 <Link
                   _text={{
                     fontWeight: 'bold',
@@ -191,7 +189,6 @@ export default function OtpVerification(props: any) {
                 >
                   Sign up
                 </Link>
-                {/* Closing Link Tag */}
               </HStack>
             </VStack>
           </Box>

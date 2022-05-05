@@ -36,8 +36,13 @@ export interface Result {
  */
 export default function useCourier(Options: Options = {}) {
   const { reconnectLimit = 3, reconnectInterval = 3 * 1000 } = Options
-  const [message, setMessage] = useState([])
-  const [userList, setUserList] = useState([])
+  const [message, setMessage] = useState({
+    content: null,
+    source: null,
+    target: null,
+    timestamp: null,
+  })
+  const [user, setUser] = useState(null)
   const [courierKey, setCourierKey] = useState('')
   const [courierName, setCourierName] = useState('排队中')
   const [avatar, setAvatar] = useState('')
@@ -103,9 +108,10 @@ export default function useCourier(Options: Options = {}) {
         }
         cloudCourierRef.current = cloudCourier
         setReadyState(cloudCourier.getState() || ProtocolState.MESSAGING)
-        console.log('连接成功')
+        console.log('连接成功', cloudCourier.getState())
         cloudCourier.addListener({
           packetReceived(event: PacketReceivedEvent) {
+            console.log('收到消息', event.packet)
             const { session } = event
             const { packet } = event
             if (packet instanceof ClientboundPongPacket) {
@@ -118,6 +124,8 @@ export default function useCourier(Options: Options = {}) {
               // 接收到消息
               const { content, source, target } = packet
               const timestamp = packet.timestamp.toNumber()
+              // 消息发送给前台，让前台处理
+              setMessage({ content, source, target, timestamp })
             } else if (packet instanceof ClientboundStrangerPacket) {
               console.log('收到新用户')
               // 来访客了
@@ -130,8 +138,9 @@ export default function useCourier(Options: Options = {}) {
                 key,
                 location,
                 name,
+                firstVisitTime,
               } = packet
-              const setValue = JSON.stringify({
+              setUser({
                 appKey,
                 appLogo,
                 appName,
@@ -140,16 +149,10 @@ export default function useCourier(Options: Options = {}) {
                 key,
                 location,
                 name,
+                timestamp: firstVisitTime.toNumber(),
               })
-              // try {
-              //   AsyncStorage.getItem(key).then((value) => {
-              //     if (!value) {
-              //       AsyncStorage.setItem(key, setValue)
-              //     }
-              //   })
-              // } catch (e) {
-              //   // read error
-              // }
+              console.log('新用户', user)
+              setCourierKey(key)
             }
           },
           packetSent({ packet }) {
@@ -186,23 +189,23 @@ export default function useCourier(Options: Options = {}) {
    * fa
    * @param message 消息内容
    */
-  const sendMessage = (message: string) => {
+  const sendMessage = (key, message: string) => {
     if (readyState === ProtocolState.MESSAGING) {
-      cloudCourierRef.current?.send(
-        new ServerboundMessagePacket(courierKey, message)
-      )
+      console.log('消息发出去了', key, message)
+      cloudCourierRef.current?.send(new ServerboundMessagePacket(key, message))
     } else {
       throw new Error('WebSocket disconnected')
     }
   }
   const connect = () => {
     reconnectTimesRef.current = 0
-    return connectWs()
+    connectWs()
   }
   const disconnect = () => {
     if (reconnectTimerRef.current) {
       clearTimeout(reconnectTimerRef.current)
     }
+    console.log('disconnect')
     reconnectTimesRef.current = reconnectLimit
     cloudCourierRef.current?.close()
   }
@@ -210,16 +213,17 @@ export default function useCourier(Options: Options = {}) {
   // 组件销毁时，实例关闭
   useUnmount(() => {
     unmountedRef.current = true
+    console.log('销毁')
     disconnect()
   })
   return {
-    // cloudCourier: cloudCourierRef.current,
+    cloudCourier: cloudCourierRef.current,
     courierName,
     avatar,
     courierKey,
     message,
     readyState,
-    userList,
+    user,
     connect: useMemoizedFn(connect),
     sendMessage: useMemoizedFn(sendMessage),
   }

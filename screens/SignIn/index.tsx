@@ -32,21 +32,31 @@ export function SignInForm({ props }) {
   const [login, setLogin] = useState('')
   const [password, setPassword] = useState('')
   const [showPass, setShowPass] = useState(false)
+  const [isloading, setIsloading] = useState(false)
   const dispatch = useAppDispatch()
   const loginSubmit = () => {
-    LoginAPI({ login, password }).then((res) => {
-      if (res.status === 200) {
-        dispatch(setUser(res.data))
-        Toast.show({
-          title: '欢迎回来',
+    setIsloading(true)
+    setTimeout(() => {
+      LoginAPI({ login, password })
+        .then((res) => {
+          if (res.status === 200) {
+            dispatch(setUser(res.data))
+            Toast.show({
+              title: '欢迎回来',
+            })
+            props.navigation.navigate('Root')
+            return
+          }
+          Toast.show({
+            title: '登陆失败',
+          })
+          setIsloading(false)
         })
-        props.navigation.navigate('Root')
-        return
-      }
-      Toast.show({
-        title: '登陆失败',
-      })
-    })
+        .catch(() => {
+          // TODO 考虑到组件卸载，卸载后不能在更新状态
+          setIsloading(false)
+        })
+    }, 2000)
   }
   return (
     <KeyboardAwareScrollView
@@ -66,6 +76,7 @@ export function SignInForm({ props }) {
         borderTopRightRadius={{ base: '2xl', md: 'xl' }}
         borderBottomRightRadius={{ base: '0', md: 'xl' }}
         borderTopLeftRadius={{ base: '2xl', md: '0' }}
+        isDisabled={isloading}
       >
         <VStack space='7'>
           <Hidden till='md'>
@@ -183,6 +194,7 @@ export function SignInForm({ props }) {
                   bg: 'primary.700',
                 }}
                 onPress={loginSubmit}
+                isLoading={isloading}
               >
                 SIGN IN
               </Button>
@@ -238,7 +250,6 @@ export function SignInForm({ props }) {
           >
             Don't have an account?
           </Text>
-          {/* Opening Link Tag navigateTo:"SignUp" */}
           <Link
             _text={{
               fontWeight: 'bold',
@@ -260,7 +271,6 @@ export function SignInForm({ props }) {
           >
             Sign up
           </Link>
-          {/* Closing Link Tag */}
         </HStack>
       </VStack>
     </KeyboardAwareScrollView>
