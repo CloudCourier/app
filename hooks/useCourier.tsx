@@ -108,10 +108,8 @@ export default function useCourier(Options: Options = {}) {
         }
         cloudCourierRef.current = cloudCourier
         setReadyState(cloudCourier.getState() || ProtocolState.MESSAGING)
-        console.log('连接成功', cloudCourier.getState())
         cloudCourier.addListener({
           packetReceived(event: PacketReceivedEvent) {
-            console.log('收到消息', event.packet)
             const { session } = event
             const { packet } = event
             if (packet instanceof ClientboundPongPacket) {
