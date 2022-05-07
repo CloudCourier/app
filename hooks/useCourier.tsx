@@ -14,6 +14,7 @@ import {
 import { useRef, useState } from 'react'
 import useMemoizedFn from './useMemoizedFn'
 import useUnmount from './useUnmount'
+import { Toast } from 'native-base'
 
 export interface Options {
   reconnectLimit?: number
@@ -95,6 +96,9 @@ export default function useCourier(Options: Options = {}) {
     cloudCourier
       .preAuth()
       .then(() => {
+        Toast.show({
+          title: '我完成了预认证',
+        })
         if (unmountedRef.current) {
           return
         }
@@ -108,17 +112,28 @@ export default function useCourier(Options: Options = {}) {
         }
         cloudCourierRef.current = cloudCourier
         setReadyState(cloudCourier.getState() || ProtocolState.MESSAGING)
+        Toast.show({
+          title: '我完成了连接了吗',
+        })
         cloudCourier.addListener({
           packetReceived(event: PacketReceivedEvent) {
             const { session } = event
             const { packet } = event
+            console.log(' all package name :', packet.packetName)
+            Toast.show({
+              title: ' all package name :' + packet.packetName,
+            })
             if (packet instanceof ClientboundPongPacket) {
               return
             }
             // 使用 if 而不是使用 switch 是为了使用 instaceof 使其强制类型转换
             if (packet instanceof ClientboundWelcomePacket) {
               session.setState(ProtocolState.MESSAGING)
+              Toast.show({
+                title: '我二次握手了',
+              })
             } else if (packet instanceof ClientboundMessagePacket) {
+              console.log('package name :', packet.packetName)
               // 接收到消息
               const { content, source, target } = packet
               const timestamp = packet.timestamp.toNumber()
@@ -184,7 +199,7 @@ export default function useCourier(Options: Options = {}) {
       })
   }
   /**
-   * fa
+   * 
    * @param message 消息内容
    */
   const sendMessage = (key, message: string) => {

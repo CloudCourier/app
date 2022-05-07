@@ -5,6 +5,7 @@
   "scripts": {
     "start": "expo start",
     "android": "expo start --android",
+    "adprod": "expo start --android --no-dev --minify",
     "ios": "expo start --ios",
     "web": "expo start --web",
     "eject": "expo eject",
@@ -20,7 +21,7 @@
   "dependencies": {
     "@cloud-courier/cloud-courier-lib": "^0.0.5",
     "@expo/vector-icons": "^12.0.0",
-    "@react-native-async-storage/async-storage": "^1.17.3",
+    "@react-native-async-storage/async-storage": "~1.15.0",
     "@react-navigation/bottom-tabs": "^6.0.5",
     "@react-navigation/native": "^6.0.2",
     "@react-navigation/native-stack": "^6.1.0",
@@ -30,6 +31,7 @@
     "expo": "~44.0.0",
     "expo-asset": "~8.4.4",
     "expo-constants": "~13.0.0",
+    "expo-dev-client": "~0.8.5",
     "expo-font": "~10.0.4",
     "expo-linking": "~3.0.0",
     "expo-splash-screen": "~0.14.0",
@@ -42,7 +44,7 @@
     "react-native-gifted-chat": "^0.16.3",
     "react-native-safe-area-context": "3.3.2",
     "react-native-screens": "~3.10.1",
-    "react-native-svg": "^12.3.0",
+    "react-native-svg": "12.1.1",
     "react-native-web": "0.17.1",
     "react-redux": "^8.0.1",
     "redux-persist": "^6.0.0"

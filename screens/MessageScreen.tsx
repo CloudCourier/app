@@ -15,7 +15,6 @@ import { useAppDispatch, useAppSelector } from '../hooks/store'
 import { setSelectedUserKey } from '../store/userList.slice'
 const ChatList = ({ navigation }) => {
   const userList = useAppSelector((state) => state.userList.userList)
-  console.log(userList,'userList')
   const dispatch = useAppDispatch()
   return (
     <Box>

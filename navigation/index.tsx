@@ -60,6 +60,7 @@ export default function Navigation({
   }, [courierKey])
   useEffect(() => {
     connect()
+    console.log('connect',connect)
   }, [])
   useEffect(() => {
     if (messageChannel && messageChannel.type === 'sendMessage') {

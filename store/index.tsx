@@ -33,3 +33,5 @@ const persistor = persistStore(store)
 export { persistor, store }
 export type RootState = ReturnType<typeof store.getState>
 export type AppDispatch = typeof store.dispatch
+// 清空持久化数据
+// persistor.purge()

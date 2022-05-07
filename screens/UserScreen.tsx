@@ -4,6 +4,7 @@ import { useAppSelector } from '../hooks/store'
 
 export default function UserScreen({ navigation }) {
   const user = useAppSelector((state) => state.auth.user)
+  const isHermes = () => !!global.HermesInternal
   return (
     <View>
       <Center>
@@ -32,8 +33,9 @@ export default function UserScreen({ navigation }) {
               </Avatar>
               <Text>{user.username}</Text>
               <Button onPress={() => navigation.navigate('SignIn')}>
-              切换账号
-            </Button>
+                切换账号
+              </Button>
+              <Text>{isHermes ? "我存在" : "不存在"}</Text>
             </>
           )}
         </VStack>

@@ -40,7 +40,6 @@ export default function ChatScreen() {
     }))
     setMessages(messageList)
   }, [userList, selectedUserKey])
-  const broadcastChannel = new BroadcastChannel('channel')
   const onSend = useCallback((messages = []) => {
     // TODO 这里需要改造，应当从hooks里面去拿方法，而不是广播
     dispatch(

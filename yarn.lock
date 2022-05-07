@@ -1105,7 +1105,7 @@
     xcode "^3.0.1"
     xml2js "0.4.23"
 
-"@expo/config-plugins@4.1.4", "@expo/config-plugins@^4.0.2":
+"@expo/config-plugins@4.1.4", "@expo/config-plugins@^4.0.14", "@expo/config-plugins@^4.0.2":
   version "4.1.4"
   resolved "https://registry.npmmirror.com/@expo/config-plugins/-/config-plugins-4.1.4.tgz"
   integrity sha512-fkOjXnSieQfVSWVLKhst0DnCAyeHksvWky1CldFCQllhDB1HHBiP09Z8pamVB783n3qr/1HNZiSp6k2iUcaSoA==
@@ -2032,10 +2032,10 @@
     "@react-aria/ssr" "^3.0.1"
     "@react-aria/utils" "^3.3.0"
 
-"@react-native-async-storage/async-storage@^1.17.3":
-  version "1.17.3"
-  resolved "https://registry.npmmirror.com/@react-native-async-storage/async-storage/-/async-storage-1.17.3.tgz#fa7010aa9b6a811ff653df3698a90d3c173dd6a6"
-  integrity sha512-2dxdlGwBjBP2qYu6F72U7cRRFshISYiNEWCaQNOJtxUERCMaYRWcniYqhL248KSbGUMpRhFCEtliztsiGoYYMA==
+"@react-native-async-storage/async-storage@~1.15.0":
+  version "1.15.17"
+  resolved "https://registry.npmmirror.com/@react-native-async-storage/async-storage/-/async-storage-1.15.17.tgz#0dae263a52e476ffce871086f1fef5b8e44708eb"
+  integrity sha512-NQCFs47aFEch9kya/bqwdpvSdZaVRtzU7YB02L8VrmLSLpKgQH/1VwzFUBPcc1/JI1s3GU4yOLVrEbwxq+Fqcw==
   dependencies:
     merge-options "^3.0.4"
 
@@ -3175,7 +3175,7 @@ blueimp-md5@^2.10.0:
   resolved "https://registry.npmmirror.com/blueimp-md5/-/blueimp-md5-2.19.0.tgz"
   integrity sha512-DRQrD6gJyy8FbiE4s+bDoXS9hiW3Vbx5uCdwvcCf3zLHL+Iv7LtGHLpr+GZV8rHG8tK766FGYBwRbu8pELTt+w==
 
-boolbase@^1.0.0:
+boolbase@^1.0.0, boolbase@~1.0.0:
   version "1.0.0"
   resolved "https://registry.npmmirror.com/boolbase/-/boolbase-1.0.0.tgz"
   integrity sha512-JZOSA7Mo9sNGB8+UjSgzdLtokWAky1zbztM3WRLCbZ70/3cTANmQmOdR7y2g+J0e2WXywy1yS468tY+IruqEww==
@@ -3702,16 +3702,15 @@ css-in-js-utils@^2.0.0:
     hyphenate-style-name "^1.0.2"
     isobject "^3.0.1"
 
-css-select@^4.2.1:
-  version "4.3.0"
-  resolved "https://registry.npmmirror.com/css-select/-/css-select-4.3.0.tgz"
-  integrity sha512-wPpOYtnsVontu2mODhA19JrqWxNsfdatRKd64kmpRbQgh1KtItko5sTnEpPdpSaJszTOhEMlF/RPz28qj4HqhQ==
+css-select@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.npmmirror.com/css-select/-/css-select-2.1.0.tgz#6a34653356635934a81baca68d0255432105dbef"
+  integrity sha512-Dqk7LQKpwLoH3VovzZnkzegqNSuAziQyNZUcrdDM401iY+R5NkGBXGmtO05/yaXQziALuPogeG0b7UAgjnTJTQ==
   dependencies:
     boolbase "^1.0.0"
-    css-what "^6.0.1"
-    domhandler "^4.3.1"
-    domutils "^2.8.0"
-    nth-check "^2.0.1"
+    css-what "^3.2.1"
+    domutils "^1.7.0"
+    nth-check "^1.0.2"
 
 css-tree@^1.0.0-alpha.39:
   version "1.1.3"
@@ -3721,10 +3720,10 @@ css-tree@^1.0.0-alpha.39:
     mdn-data "2.0.14"
     source-map "^0.6.1"
 
-css-what@^6.0.1:
-  version "6.1.0"
-  resolved "https://registry.npmmirror.com/css-what/-/css-what-6.1.0.tgz"
-  integrity sha512-HTUrgRJ7r4dsZKU6GjmpfRK1O76h97Z8MfS1G0FozR+oF2kG6Vfe8JE6zwrkbxigziPHinCJ+gCPjA9EaBDtRw==
+css-what@^3.2.1:
+  version "3.4.2"
+  resolved "https://registry.npmmirror.com/css-what/-/css-what-3.4.2.tgz#ea7026fcb01777edbde52124e21f327e7ae950e4"
+  integrity sha512-ACUm3L0/jiZTqfzRM3Hi9Q8eZqd6IK37mMWPLz9PJxkLWllYeRf+EHUSHYEtFop2Eqytaq1FizFVh7XfBnXCDQ==
 
 cssom@^0.4.4:
   version "0.4.4"
@@ -3765,14 +3764,9 @@ data-urls@^2.0.0:
     whatwg-mimetype "^2.3.0"
     whatwg-url "^8.0.0"
 
-dayjs@^1.11.1:
+dayjs@^1.11.1, dayjs@^1.8.15, dayjs@^1.8.26:
   version "1.11.1"
   resolved "https://registry.npmmirror.com/dayjs/-/dayjs-1.11.1.tgz#90b33a3dda3417258d48ad2771b415def6545eb0"
-  integrity sha512-ER7EjqVAMkRRsxNCC5YqJ9d9VQYuWdGt7aiH2qA5R5wt8ZmWaP2dLUSIK6y/kVzLMlmh1Tvu5xUf4M/wdGJ5KA==
-
-dayjs@^1.8.15, dayjs@^1.8.26:
-  version "1.11.1"
-  resolved "https://registry.npmmirror.com/dayjs/-/dayjs-1.11.1.tgz"
   integrity sha512-ER7EjqVAMkRRsxNCC5YqJ9d9VQYuWdGt7aiH2qA5R5wt8ZmWaP2dLUSIK6y/kVzLMlmh1Tvu5xUf4M/wdGJ5KA==
 
 debug@2.6.9, debug@^2.2.0, debug@^2.3.3:
@@ -3901,16 +3895,20 @@ dom-helpers@^5.0.0:
     "@babel/runtime" "^7.8.7"
     csstype "^3.0.2"
 
-dom-serializer@^1.0.1:
-  version "1.4.1"
-  resolved "https://registry.npmmirror.com/dom-serializer/-/dom-serializer-1.4.1.tgz"
-  integrity sha512-VHwB3KfrcOOkelEG2ZOfxqLZdfkil8PtJi4P8N2MMXucZq2yLp75ClViUlOVwyoHEDjYU433Aq+5zWP61+RGag==
+dom-serializer@0:
+  version "0.2.2"
+  resolved "https://registry.npmmirror.com/dom-serializer/-/dom-serializer-0.2.2.tgz#1afb81f533717175d478655debc5e332d9f9bb51"
+  integrity sha512-2/xPb3ORsQ42nHYiSunXkDjPLBaEj/xTwUO4B7XCZQTRk7EBtTOPaygh10YAAh2OI1Qrp6NWfpAhzswj0ydt9g==
   dependencies:
     domelementtype "^2.0.1"
-    domhandler "^4.2.0"
     entities "^2.0.0"
 
-domelementtype@^2.0.1, domelementtype@^2.2.0:
+domelementtype@1:
+  version "1.3.1"
+  resolved "https://registry.npmmirror.com/domelementtype/-/domelementtype-1.3.1.tgz#d048c44b37b0d10a7f2a3d5fee3f4333d790481f"
+  integrity sha512-BSKB+TSpMpFI/HOxCNr1O8aMOTZ8hT3pM3GQ0w/mWRmkhEDSFJkkyzz4XQsBV44BChwGkrDfMyjVD0eA2aFV3w==
+
+domelementtype@^2.0.1:
   version "2.3.0"
   resolved "https://registry.npmmirror.com/domelementtype/-/domelementtype-2.3.0.tgz"
   integrity sha512-OLETBj6w0OsagBwdXnPdN0cnMfF9opN69co+7ZrbfPGrdpPVNBUj02spi6B1N7wChLQiPn4CSH/zJvXw56gmHw==
@@ -3922,21 +3920,13 @@ domexception@^2.0.1:
   dependencies:
     webidl-conversions "^5.0.0"
 
-domhandler@^4.2.0, domhandler@^4.3.1:
-  version "4.3.1"
-  resolved "https://registry.npmmirror.com/domhandler/-/domhandler-4.3.1.tgz"
-  integrity sha512-GrwoxYN+uWlzO8uhUXRl0P+kHE4GtVPfYzVLcUxPL7KNdHKj66vvlhiweIHqYYXWlw+T8iLMp42Lm67ghw4WMQ==
+domutils@^1.7.0:
+  version "1.7.0"
+  resolved "https://registry.npmmirror.com/domutils/-/domutils-1.7.0.tgz#56ea341e834e06e6748af7a1cb25da67ea9f8c2a"
+  integrity sha512-Lgd2XcJ/NjEw+7tFvfKxOzCYKZsdct5lczQ2ZaQY8Djz7pfAD3Gbp8ySJWtreII/vDlMVmxwa6pHmdxIYgttDg==
   dependencies:
-    domelementtype "^2.2.0"
-
-domutils@^2.8.0:
-  version "2.8.0"
-  resolved "https://registry.npmmirror.com/domutils/-/domutils-2.8.0.tgz"
-  integrity sha512-w96Cjofp72M5IIhpjgobBimYEfoPjx1Vx0BSX9P30WBdZW2WIKU0T1Bd0kz2eNZ9ikjKgHbEyKx8BB6H1L3h3A==
-  dependencies:
-    dom-serializer "^1.0.1"
-    domelementtype "^2.2.0"
-    domhandler "^4.2.0"
+    dom-serializer "0"
+    domelementtype "1"
 
 ee-first@1.1.1:
   version "1.1.1"
@@ -4184,6 +4174,41 @@ expo-constants@~13.0.0, expo-constants@~13.0.2:
     "@expo/config" "^6.0.6"
     uuid "^3.3.2"
 
+expo-dev-client@~0.8.5:
+  version "0.8.5"
+  resolved "https://registry.npmmirror.com/expo-dev-client/-/expo-dev-client-0.8.5.tgz#2eba4081660e75c45847a2dfea08042eb565143c"
+  integrity sha512-sdqkAQAsGqqbTLStyK239qfWrDg+gBOmu59ow4yxv0kdNkp1pVmpNu5kFv/nL0n4ao9aClbY5AjmZwfiGC3rYQ==
+  dependencies:
+    "@expo/config-plugins" "^4.0.14"
+    expo-dev-launcher "0.10.5"
+    expo-dev-menu "0.9.3"
+    expo-dev-menu-interface "0.5.3"
+    expo-manifests "~0.2.2"
+    expo-updates-interface "~0.5.0"
+
+expo-dev-launcher@0.10.5:
+  version "0.10.5"
+  resolved "https://registry.npmmirror.com/expo-dev-launcher/-/expo-dev-launcher-0.10.5.tgz#4e99212ffb1c3cc10fe42781256d4442014a6eca"
+  integrity sha512-6E/Za439cbq0DtksQup8szLBw2pf9o9vdx8BcvlwyPGglbJICx+OqApAbhQUJTpefXLH0s/sbLuPCThmOYUp4g==
+  dependencies:
+    "@expo/config-plugins" "^4.0.14"
+    expo-dev-menu "0.9.3"
+    resolve-from "^5.0.0"
+    semver "^7.3.5"
+
+expo-dev-menu-interface@0.5.3:
+  version "0.5.3"
+  resolved "https://registry.npmmirror.com/expo-dev-menu-interface/-/expo-dev-menu-interface-0.5.3.tgz#d1a43ef450d6c727780ed3018376046f0a185980"
+  integrity sha512-i1d7vtKILnq7mo6r5jSQ++UxkpP+VX/IkOAKuWGeB/B32pCTFCD32rplymFS3qPQ+vlmb5zKl5yhYSYZSVobhg==
+
+expo-dev-menu@0.9.3:
+  version "0.9.3"
+  resolved "https://registry.npmmirror.com/expo-dev-menu/-/expo-dev-menu-0.9.3.tgz#d4572d86c28b19f4f807534091122b5077821cba"
+  integrity sha512-ZUCDSO2rAhFOKuCXdwBf09VVkvAqZBhjA36b7YkwfvKxQ4nb6ZbB/JRCdtxLcre5hDJX1ya3YMNPY3R0/WCBbg==
+  dependencies:
+    "@expo/config-plugins" "^4.0.14"
+    expo-dev-menu-interface "0.5.3"
+
 expo-error-recovery@~3.0.5:
   version "3.0.5"
   resolved "https://registry.npmmirror.com/expo-error-recovery/-/expo-error-recovery-3.0.5.tgz"
@@ -4204,6 +4229,11 @@ expo-font@~10.0.4, expo-font@~10.0.5:
   dependencies:
     fontfaceobserver "^2.1.0"
 
+expo-json-utils@~0.2.0:
+  version "0.2.1"
+  resolved "https://registry.npmmirror.com/expo-json-utils/-/expo-json-utils-0.2.1.tgz#a8d15181e361f3fc782d5241ce381851bab4465b"
+  integrity sha512-wU7gXGtaUlyxFLTp5e3PbnJB90/92r6gEc2BuMHdqE0OxhTQKyKzRszk2szCsdkeI7L4XntvZhCs1Px+gL1gvA==
+
 expo-keep-awake@~10.0.2:
   version "10.0.2"
   resolved "https://registry.npmmirror.com/expo-keep-awake/-/expo-keep-awake-10.0.2.tgz"
@@ -4218,6 +4248,13 @@ expo-linking@~3.0.0:
     invariant "^2.2.4"
     qs "^6.9.1"
     url-parse "^1.4.4"
+
+expo-manifests@~0.2.2:
+  version "0.2.4"
+  resolved "https://registry.npmmirror.com/expo-manifests/-/expo-manifests-0.2.4.tgz#28aa7a0b21d8b932e1a49c836cfc31b5a9cd1f9c"
+  integrity sha512-8PrMPyvElKXflYd1ApDHJR9JF0SR996iVEVQgHAMLzVP7OqEAM6dQaFeqrRqVn/DSsxEWkJTpxv8WJ5NWrT4Lg==
+  dependencies:
+    expo-json-utils "~0.2.0"
 
 expo-modules-autolinking@0.5.5, expo-modules-autolinking@~0.5.1:
   version "0.5.5"
@@ -4250,6 +4287,11 @@ expo-status-bar@~1.2.0:
   version "1.2.0"
   resolved "https://registry.npmmirror.com/expo-status-bar/-/expo-status-bar-1.2.0.tgz"
   integrity sha512-pVZZ/kDCXFK79E4dCtRecs3XLC8aiwlciutSd/fFmUPJSQZ1Txia6hlKajPt0GAYft8/YnT0V3URXzWZOBniYQ==
+
+expo-updates-interface@~0.5.0:
+  version "0.5.1"
+  resolved "https://registry.npmmirror.com/expo-updates-interface/-/expo-updates-interface-0.5.1.tgz#b390622f60b353bb352def895a32dc800a21a4dc"
+  integrity sha512-RLvC69o1BkhHP6hNaWiIvSiTgXABB9v4HnoietoXKFHlAyxlQCupy6ki164KpZNrOS/PFJ2WWqZOvKfiyDVO+w==
 
 expo-web-browser@~10.1.0:
   version "10.1.1"
@@ -6634,12 +6676,12 @@ npm-run-path@^4.0.0:
   dependencies:
     path-key "^3.0.0"
 
-nth-check@^2.0.1:
-  version "2.0.1"
-  resolved "https://registry.npmmirror.com/nth-check/-/nth-check-2.0.1.tgz"
-  integrity sha512-it1vE95zF6dTT9lBsYbxvqh0Soy4SPowchj0UBGj/V6cTPnXXtQOPUbhZ6CmGzAD/rW22LQK6E96pcdJXk4A4w==
+nth-check@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.npmmirror.com/nth-check/-/nth-check-1.0.2.tgz#b2bd295c37e3dd58a3bf0700376663ba4d9cf05c"
+  integrity sha512-WeBOdju8SnzPN5vTUJYxYUxLeXpCaVP5i5e0LF8fg7WORF2Wd7wFX/pk0tYZk7s8T+J7VLy0Da6J1+wCT0AtHg==
   dependencies:
-    boolbase "^1.0.0"
+    boolbase "~1.0.0"
 
 nullthrows@^1.1.1:
   version "1.1.1"
@@ -7204,12 +7246,12 @@ react-native-screens@~3.10.1:
     react-freeze "^1.0.0"
     warn-once "^0.1.0"
 
-react-native-svg@^12.3.0:
-  version "12.3.0"
-  resolved "https://registry.npmmirror.com/react-native-svg/-/react-native-svg-12.3.0.tgz"
-  integrity sha512-ESG1g1j7/WLD7X3XRFTQHVv0r6DpbHNNcdusngAODIxG88wpTWUZkhcM3A2HJTb+BbXTFDamHv7FwtRKWQ/ALg==
+react-native-svg@12.1.1:
+  version "12.1.1"
+  resolved "https://registry.npmmirror.com/react-native-svg/-/react-native-svg-12.1.1.tgz#5f292410b8bcc07bbc52b2da7ceb22caf5bcaaee"
+  integrity sha512-NIAJ8jCnXGCqGWXkkJ1GTzO4a3Md5at5sagYV8Vh4MXYnL4z5Rh428Wahjhh+LIjx40EE5xM5YtwyJBqOIba2Q==
   dependencies:
-    css-select "^4.2.1"
+    css-select "^2.1.0"
     css-tree "^1.0.0-alpha.39"
 
 react-native-typing-animation@^0.1.7:
