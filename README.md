@@ -12,7 +12,7 @@ cloudcourierapp
 - `expo start --dev-client` 
 - 控制台输入 `a` 真机自动打开 `APP` 
 - 控制台输入 `j` 浏览器端自动打开调试窗口
-## dev(出现异常，可能出现不能打开问题)
+## dev
 - 在真机上下载`expo go` ，并连上 `usb`  ，开启调试权限
 - yarn android 
 - 控制台输入 `a` 真机自动打开 `APP` 
