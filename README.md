@@ -31,8 +31,7 @@
 # 真机出现无法连接？
 若电脑上安装有虚拟机，可能会出现网卡占用端口，无法识别问题。
 可将 `LAN` 切换为 `Local` 
-# 访客端
-`https://cloud-courier-customer-service-visitor.vercel.app/` 
+
 # other
 ## 打包时间过长？
 打包在 `expo` 服务器上进行，单次打包在 `8min` 左右
