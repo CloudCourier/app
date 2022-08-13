@@ -1,5 +1,5 @@
 # cloudcourierapp
-cloudcourierapp
+> 因通信包序列化方式在 ReactNative 中不能正常运行，代码暂存，时间充分时，排查下问题（亿点点麻烦）。
 
 # 安装依赖
 - 运行依赖`yarn install` 
